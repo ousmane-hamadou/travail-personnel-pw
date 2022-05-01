@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Element de structuration</title>
+
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background-color: #f9f9fb;
+        color: #000333;
+      }
+
+      a {
+        color: #3842ff;
+      }
+
+      body > header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        /* border-bottom: 2px solid lightgrey; */
+      }
+
+      header {
+        outline: 1px crimson dashed;
+        /* padding: 8px; */
+        /* margin: 8px; */
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Mon Super site</h1>
+
+      <nav>
+        <ul>
+          <li><a href="#">Lien 1</a></li>
+          <li><a href="#">Lien 2</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <header>
+        <h2>Titre 2</h2>
+      </header>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere labore
+        minus voluptates, neque aperiam culpa, quod perspiciatis, odio
+        reiciendis saepe quam ullam quis? Vitae hic tempora debitis. Vitae, aut
+        recusandae?
+      </p>
+    </article>
+  </body>
+</html>
