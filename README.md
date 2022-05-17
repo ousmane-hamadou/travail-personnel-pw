@@ -16,7 +16,7 @@ Il est important de noter que l'utilisation d'éléments structuration sémantiq
 
 La balise HTML `header` spécifie l’en-tête d’un document, d’une section ou d’un article. L'élément `header` devrait être utilisé comme un conteneur pour  du contenu introductif ou généralement un groupe de contenu introductif, de contenu aidant à la navigation. Il peut également contenir des éléments  tels que des titres, un logo, formulaire de recherche.
 
-Exemple
+**Exemple de code**
 
 ```html
 <!DOCTYPE html>
@@ -86,7 +86,7 @@ Exemple
 </html>
 ```
 
-Résultat
+**Sortie**
 
 ![header](assets/header.png)
 
@@ -103,7 +103,7 @@ On peut citer comme exemples :
 - un message sur le forum
 - une fiche produit
 
-Exemple
+**Exemple de code**
 
 ```html
 <!DOCTYPE html>
@@ -167,7 +167,7 @@ Exemple
 </html>
 ```
 
-Résultat
+**Sortie**
 
 ![article](assets/article.png)
 
@@ -180,7 +180,7 @@ Résultat
 
 L’élément `nav` forme le bloc principal fait pour créer des zone conséquents contenants des liens de navigations  vers d'autres pages ou des fragments de cette page. On utilise principalement pour contenir des menus, des tables des matières, des index, etc.
 
-Exemple
+**Exemple de code**
 
 ```html
 <!DOCTYPE html>
@@ -249,7 +249,7 @@ Exemple
 </html>
 ```
 
-Résultat
+**Sortie**
 
 ![nav](assets/nav.png)
 
@@ -257,7 +257,7 @@ Résultat
 
 L’élément `section` est utilisé pour regrouper le contenu thématique. L'élément `section` ne doit pas être utilisé comme un conteneur générique à la place de l’élément `div`, notamment lorsque le sectionnement du contenu sert uniquement la mise en forme.
 
-Exemple
+**Exemple de code**
 
 ```html
 <!DOCTYPE html>
@@ -303,7 +303,7 @@ Exemple
 </html>
 ```
 
-Résultat
+**Sortie**
 
 ![section](assets/section.png)
 
@@ -313,7 +313,7 @@ Résultat
 
 L’élément `aside` définit une section contenant des informations complémentaires au département principal c'est-a-dire une partie d'un document dont le contenu n'a qu'un rapport indirect avec le contenu principal du document.
 
-Exemple
+**Exemple de code**
 
 ```html
 <!DOCTYPE html>
@@ -385,7 +385,7 @@ Exemple
 </html>
 ```
 
-Résultat
+**Sortie**
 
 ![aside](assets/aside.png)
 
@@ -397,7 +397,7 @@ Déjà utiliser dans les exemples précédents, l’élément `main` forme le co
 
 Un document ne peut pas avoir plus d'un seul élément `main`
 
-Exemple
+**Exemple de code**
 
 ```html
 <!DOCTYPE html>
@@ -450,7 +450,7 @@ Exemple
 </html>
 ```
 
-Resultat
+**Sortie**
 
 ![main](assets/main.png)
 
@@ -460,7 +460,7 @@ Resultat
 
 L'élément `footer` forme le pied de la section ou de l'élément racine dans lequel il se trouve. Un élément `footer` contient habituellement des informations sur l'autrice ou l'auteur de la section, les données relatives au droit d'auteur (*copyright*) ou les liens vers d'autres documents en relation.
 
-Exemple
+**Exemple de code**
 
 ```html
 <!DOCTYPE html>
@@ -534,6 +534,180 @@ Exemple
 </html>
 ```
 
-Résultat
+**Sortie**
 
 ![footer](assets/footer.png)
+
+## Dates et Heures en PHP
+PHP offre de nombreux fonctions pour manipuler les dates et heures, Il existe près de cinquante fonctions de date et d'heure. Nous allons les réduire à certaines d'entre elles qui sont très importantes pour nous.
+
+### Fonction `date()`
+
+La fonction date() formate un horodatage pour qu'il ait un sens, par exemple 16h58 jeudi 17 mai 2022. La fonction `date()` accepte deux arguments, selon la syntaxe suivante : `date(format, timestamp)`.
+
+**Exemple de code**
+
+```php
+// affiche le jour en fonction de votre local
+echo date("l") . PHP_EOL;
+
+// affiche le jour au format, date, mois, annee, heure, AM ou PM
+echo date("l jS \of F Y h:i:s A");
+?>
+```
+
+**Console**
+
+```
+Tuesday
+Tuesday 17th of May 2022 09:20:41 AM
+```
+
+PHP fournit plus de trente-cinq caractères sensibles à la casse qui sont utilisés pour formater la date et l'heure. En voici quelques une :
+
+|         | Caractères           | Description                                                  | Exemple                   |
+| ------- | -------------------- | ------------------------------------------------------------ | ------------------------- |
+| Jour    | j                    | Jour du mois, pas de zéros en tête                           | 1-31                      |
+| Jour    | d                    | Jour du mois, 2 chiffres, zéros en tête                      | 01-31                     |
+| Jour    | D                    | Jour de la semaine, 3 premières lettres                      | Mon – Sun                 |
+| Jour    | l ("minuscule de L") | Jour de la semaine                                           | Sunday – Saturday         |
+| Jour    | N                    | Jour numérique de la semaine                                 | 1 (Monday) – 7 (Sunday)   |
+| Jour    | w                    | Jour numérique de la semaine                                 | 0 (Sunday) – 6 (Saturday) |
+| Jour    | z                    | Jour de l'année                                              | 0-365                     |
+| Semaine | O                    | Semaine numérique de l'année (les semaines commencent le lundi) | 1-52                      |
+| Mois    | M                    | Représentation textuelle d'un mois, trois lettres            | Jan – Dec                 |
+| Mois    | F                    | Représentation textuelle complète d'un mois                  | January – December        |
+| Mois    | m                    | Mois numérique, avec des zéros non significatifs             | 01-12                     |
+| Mois    | n                    | Mois numérique, sans zéros non significatifs                 | 1-12                      |
+| Mois    | t                    | Nombre de jours dans le mois donné                           | 28-31                     |
+| Année   | Y                    | Représentation numérique d'une année, 4 chiffres             | 2000,1999                 |
+| Année   | y                    | Représentation à 2 chiffres d'une année                      | 99,97, etc.               |
+| Temps   | a                    | Minuscule Ante Meridiem & Post Meridiem                      | am, pm                    |
+| Temps   | A                    | Majuscule Ante Meridiem & Post Meridiem                      | AM, PM                    |
+| Temps   | g                    | Format 12 heures sans zéros non significatifs                | 1-12                      |
+| Temps   | G                    | Format 24 heures sans zéros en tête                          | 00-23                     |
+| Temps   | h                    | Format 12 heures avec des zéros non significatifs            | 01-12                     |
+| Temps   | H                    | Format 24 heures avec des zéros non significatifs            | 00-23                     |
+| Temps   | i                    | Minutes avec des zéros non significatifs                     | 00-59                     |
+| Temps   | s                    | Secondes avec des zéros non significatifs                    | 00-59                     |
+
+En utilisant une combinaison de ces caractères et virgules, points, tirets, points-virgules et barres obliques inverses, vous pouvez désormais formater les dates et les heures au format de votre choix.
+
+**Exemple de code**
+
+```php
+<?php
+  echo date("g:i A l, F d, Y");
+
+  $yesterday = strtotime("yesterday");
+  echo date("Y-m-d", $yesterday);
+?>
+```
+
+**Console**
+
+```
+9:44 AM Tuesday, May 17, 2022
+2022-05-16
+```
+
+### Fonction `time()`
+
+La fonction `time()` renvoie l'horodatage actuel. La fonction `time()` peut également renvoyer un horodatage modifié. Vous pouvez ajouter ou soustraire n'importe quel nombre de secondes à la fonction afin de renvoyer l'horodatage d'une date et d'une heure précédentes ou à venir.
+
+Par exemple, pour renvoyer un horodatage pour la semaine prochaine ou pour renvoyer un horodatage de la semaine dernière, je peux ajouter ou soustraire 7 jours en déterminant le nombre de secondes impliquées (7 jours * 24 heures par jour * 60 minutes dans une heure * 60 secondes dans une heure = nombre de secondes dans 7 jours).
+
+**Exemple de code**
+
+```php
+  $last_week = time() - (7 * 24 * 60 * 60);
+  $next_week = time() + (7 * 24 * 60 * 60);
+  $next_month = time() + (30 * 24 * 60 * 60);
+
+  echo 'La Semaine dernière: ' . $last_week . PHP_EOL;
+  echo 'Semaine prochaine: ' . $next_week . PHP_EOL;
+  echo 'Mois prochain: ' . $next_month . PHP_EOL;
+```
+
+**Console**
+
+```
+La Semaine dernière: 1652176735
+La Semaine prochaine: 1653386335
+Le Mois prochain: 1655373596
+```
+
+### Fonction `strtotime()`
+
+La fonction `strtotime()` accepte une description `datetime` en anglais et la transforme en horodatage. C'est un moyen simple de déterminer "la semaine prochaine" ou "lundi dernier" sans utiliser la fonction `time()` et un tas de maths.
+
+**Exemple de code**
+
+```php
+<?php
+  echo strtotime("now") . PHP_EOL;
+  echo strtotime("tomorrow") . PHP_EOL;
+  echo strtotime("yesterday") . PHP_EOL;
+  echo strtotime("10 September 2000") . PHP_EOL;
+  echo strtotime("+1 day") . PHP_EOL;
+  echo strtotime("+1 week") . PHP_EOL;
+  echo strtotime("+1 week 2 days 4 hours 2 seconds") . PHP_EOL;
+?>
+```
+
+**Console**
+
+```
+1652781956
+1652832000
+1652659200
+968544000
+1652868356
+1653386756
+1653573958
+```
+
+### Fonction `localtime()`
+
+La fonction `localtime()` renvoie un tableau contenant les composants horaires d'un horodatage Unix.
+
+**Exemple de code**
+
+```php
+<?php
+print_r(localtime());
+echo PHP_EOL;
+print_r(localtime(time(),true));
+?>
+```
+
+**Console**
+
+```
+Array
+(
+    [0] => 12
+    [1] => 8
+    [2] => 10
+    [3] => 17
+    [4] => 4
+    [5] => 122
+    [6] => 2
+    [7] => 136
+    [8] => 0
+)
+
+Array
+(
+    [tm_sec] => 12
+    [tm_min] => 8
+    [tm_hour] => 10
+    [tm_mday] => 17
+    [tm_mon] => 4
+    [tm_year] => 122
+    [tm_wday] => 2
+    [tm_yday] => 136
+    [tm_isdst] => 0
+)
+```
+
