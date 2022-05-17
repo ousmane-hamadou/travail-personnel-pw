@@ -1,3 +1,5 @@
+
+
 # [TPE] Programmation Web
 
 Ousmane Hamadou - 17B292FS
@@ -710,4 +712,69 @@ Array
     [tm_isdst] => 0
 )
 ```
+
+## Utilisation des cookies en PHP
+
+Un cookie est un petit ensembles de données envoyer par le serveur web au navigateur web de  vos visiteurs. Le navigateur peut alors le stocker localement, puis le renvoyer à la prochaine requête vers le même serveur.  Les cookies ont une durée de vie limitée (on pourra définir la date d’expiration d’un cookie)  et peuvent être à tout moment supprimer par vos visiteurs sur leur ordinateur.
+
+Nous utilisons généralement les cookies pour trois principales raison : 
+
+- Gestion des sessions : Logins, panier d'achat, score d'un jeu, ou tout autre chose dont le serveur doit se souvenir.
+- Personnalisation : Préférences utilisateur, thèmes, et autres paramètres.
+- Suivi : Enregistrement et analyse du comportement utilisateur.
+
+En PHP, nous utilisons la fonction `setcookie()` pour créer les cookies. Cette fonction doit être appeler avant d’écrire tout code HTML pour qu’elle fonctionne puisque les cookies doivent être envoyés avant toute autre sortie.
+
+**Synthaxe**
+
+```php
+setcookie(
+    string $name,
+    string $value = "",
+    int $expires_or_options = 0,
+    string $path = "",
+    string $domain = "",
+    bool $secure = false,
+    bool $httponly = false
+): bool
+```
+
+
+| Parametre              | Description                                                  |
+| ---------------------- | ------------------------------------------------------------ |
+| **name**               | Le nom du cookie. Le nom d’un cookie est soumis aux mêmes règles que les noms des variables. |
+| **value**              | La valeur du cookie. Cette valeur est stockée sur l'ordinateur du client ; ne stockez pas d'informations importantes. Si le paramètre `name` vaut `'cookiename'`, cette valeur est récupéré avec `$_COOKIE['cookiename']`. |
+| **expires_or_options** | La date d’expiration du cookie sous forme d’un timestamp UNIX, donc, ce sera un nombre de secondes depuis l'époque Unix (1 janvier 1970 GMT). En d'autres termes, vous devriez fixer cette valeur à l'aide de la fonction `time()`en y ajoutant le nombre de secondes après lequel on veut que le cookie expire. Si vous ne spécifiez pas ce paramètre ou s'il vaut 0, le cookie expirera à la fin de la session (lorsque le navigateur sera fermé). |
+| **path**               | Le chemin sur le serveur sur lequel le cookie sera disponible. Si la valeur est `'/'`, le cookie sera disponible sur l'ensemble du domaine `domain`. Si la valeur est `'/foo/'`, le cookie sera uniquement disponible dans le répertoire `/foo/` ainsi que tous ses sous-répertoires comme `/foo/bar/` dans le domaine `domain`. La valeur par défaut est le répertoire courant où le cookie a été défini. |
+| **domain**             | Indique le domaine ou le sous domaine pour lequel le cookie est disponible. Définir ceci à un sous-domaine (tel que `'www.example.com'`) rendra le cookie disponible pour ce sous-domaine ainsi que tous ses sous-domaines (par exemple : `w2.www.example.com`). |
+| **secure**             | Indique si le cookie doit uniquement être transmis à travers une connexion sécurisée HTTPS depuis le client. Si la valeur passée est `true`, le cookie ne sera envoyé que si la connexion est sécurisée |
+| **httponly**           | Indique si le cookie ne doit être accessible que par le protocole HTTP. Pour que le cookie ne soit accessible que par le protocole http, on indiquera la valeur `true`. Cela permet d’interdire l’accès au cookie aux langages de scripts comme le JavaScript par exemple, pour se protéger potentiellement d’une attaque de type XSS. |
+
+Pour récupérer la valeur d’un cookie, nous allons utiliser la variable super globale `$_COOKIE`.
+
+**Exemple de code**
+
+```php+HTML
+<?php
+	// user_name  expirera à la fin de la session (lorsque le navigateur sera fermé).
+    setcookie('user_name', 'Ousmane-Hamadou');
+	// user_pref expirera apres 30 jours
+    setcookie('user_pref', 'dark_theme', time()+3600*24*30, '/', '', true, true);
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Utilisation de cookies</title>
+        <meta charset="utf-8">
+    </head>
+    
+    <body>
+        <h1>Hello <?= isset($_COOKIE['user_name']) ? str_replace('-', ' ', $_COOKIE['user_name']) : '' ?>!</h1>
+    </body>
+</html>
+```
+
+**Résultat dans Google Chrome**
+
+![cookies](assets/cookies.png)
 
