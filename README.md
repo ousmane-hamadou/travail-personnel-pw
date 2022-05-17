@@ -725,7 +725,7 @@ Nous utilisons généralement les cookies pour trois principales raison :
 
 En PHP, nous utilisons la fonction `setcookie()` pour créer les cookies. Cette fonction doit être appeler avant d’écrire tout code HTML pour qu’elle fonctionne puisque les cookies doivent être envoyés avant toute autre sortie.
 
-**Synthaxe**
+**Syntaxe**
 
 ```php
 setcookie(
@@ -778,3 +778,59 @@ Pour récupérer la valeur d’un cookie, nous allons utiliser la variable super
 
 ![cookies](assets/cookies.png)
 
+## Utilisation de session en PHP
+
+Une session est un moyen de stocker des informations à utiliser sur plusieurs pages. Contrairement à un cookie, les informations ne sont pas stockées sur l'ordinateur de l'utilisateur mais sur le serveur. En général,  un identifiant de session est envoyé au navigateur via des cookies de session et sera utilisés pour récupérer les données existantes de la session.
+
+Une session démarre dès que la fonction `session_start()` est appelée et se termine en général dès que la fenêtre courante du navigateur est fermée mais on peut également terminer la session de manière anticipée ou qu’un cookie de session avec une durée de vie plus longues ait été défini.
+
+Pour pouvoir utiliser les variables de session, il va avant tout falloir qu’une session soit démarrée avec la fonction `session_start()`. Cette fonction va se charger de vérifier si une session a déjà été démarrée en recherchant la présence d’un identifiant de session et, si ce n’est pas le cas, va démarrer une nouvelle session et générer un identifiant de session unique pour un utilisateur.
+
+La fonction `session_start()`  doit être appeler  avant toute autre opération dans nos pages, c’est-à-dire au début de celles-ci. Elle doit être également appeler dans chaque page où on souhaite pouvoir accéder aux variables de session.
+
+**Exemple**
+
+```php+HTML
+<?php
+// page1.php
+session_start();
+
+$_SESSION['message'] = 'Hello, world!';
+?>
+
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Utilisation de cookies</title>
+        <meta charset="utf-8">
+	</head>
+	<body>
+        <h1>Page 1</h1>
+        
+        <a href="page2.php">Aller a la page 2</a>
+	</body>
+</html>
+```
+
+Après avoir vu la page `page1.php` avec un navigateur, la seconde page `page2.php` (dont le code suit) va magiquement afficher les données de session. 
+
+```php+HTML
+<?php session_start(); ?>
+
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Utilisation de cookies</title>
+        <meta charset="utf-8">
+	</head>
+	<body>
+        <h1>Page 2</h1>
+        
+        <h2>Le message est : <?= $_SESSION['message'] ?></h2>
+	</body>
+</html>
+```
+
+**Résultat**
+
+![session](assets/session.png)
