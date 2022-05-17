@@ -867,7 +867,7 @@ Après le soumission, nous pouvons récupérer les données cette facon :
 
 ```php
 <?php
-    $login = $_POST['login'];
+	$login = $_POST['login'];
 	$password = $_POST['password'];
 	// ...
 ?>
@@ -879,7 +879,7 @@ Nous pouvons utiliser les paramtres des URL pour transmettre les donnees par exe
 
 ```php
 <?php
-    $name = $_GET['name'];
+    	$name = $_GET['name'];
 	// ...
 ?>
 ```
