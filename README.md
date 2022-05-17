@@ -834,3 +834,56 @@ Après avoir vu la page `page1.php` avec un navigateur, la seconde page `page2.p
 **Résultat**
 
 ![session](assets/session.png)
+
+## Transfert de données d'une page à une autre en PHP
+
+Il existe plusieurs façon de transmettre des informations d'une page à une autre en PHP qui sont entre autre les formulaires avec les methodes `POST` et `GET` et les session et les cookies.
+
+### Transmission via un formulaire
+
+Les formulaires sont le moyen le plus pratique pour le visiteur de transmettre des informations à un site. PHP est capable de récupérer les données saisies par vos visiteurs et de les traiter.
+
+```php+HTML
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mon premier formulaire</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+         <form action="login.php" method="post"> 
+             <label>Entrez votre login : </label><br />
+             <input type="text" name="login" required /><br />
+             
+             <label>Entrez votre mot de passe : </label><br />
+             <input type="password" name="password" required /><br />
+            <input type="submit" value="Envoyer" />
+         </form>
+    </body>
+</html>
+```
+
+Après le soumission, nous pouvons récupérer les données cette facon : 
+
+```php
+<?php
+    $login = $_POST['login'];
+	$password = $_POST['password'];
+	// ...
+?>
+```
+
+### Transmission via l'URL
+
+Nous pouvons utiliser les paramtres des URL pour transmettre les donnees par exemple avec le `http://localhost/bonjour.php?name=Ousmane` nous pour recuperer sur la pages `bonjour.php` comme suit
+
+```php
+<?php
+    $name = $_GET['name'];
+	// ...
+?>
+```
+
+### Les sessions et les cookies
+
+Enfin, nous pouvons utiliser les sessions et les cookies pour transmettre les données tel que décrit plus haut dans ce TPE.
