@@ -540,7 +540,173 @@ L'élément `footer` forme le pied de la section ou de l'élément racine dans l
 
 ![footer](assets/footer.png)
 
+## Positionnement en CSS
+
+CSS nous offre différentes façons de résoudre les problèmes de position, sur un axe horizontal, un axe vertical ou même les deux. Pour cela, nous disposons de la propriété CSS `position` qui permet de manipuler l'emplacement d'un élément.
+
+### Valeur `static`
+
+chaque élément a une position statique par défaut, de sorte que l'élément reste fidèle au flux de page normal. Les propriétés `top`, `right`, `bottom`, `left`et `z-index` ne s'appliquent pas.
+
+### Valeur `relative`
+
+**Example de code**
+
+```css
+/* positionnement.css */
+.item1 {
+  background-color: cadetblue;
+  position: relative;
+  bottom: 10px;
+  top: 30px;
+  left: 30ch;
+  width: 25vw;
+  height: 20vh;
+}
+
+.item2 {
+  background-color: crimson;
+  position: relative;
+  top: 4vh;
+  left: 20vw;
+  width: 25vw;
+  height: 20vh;
+}
+
+.item3 {
+  background-color: cyan;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  bottom: 50%;
+  right: 50%;
+  width: 25vw;
+  height: 20vh;
+}
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="postionnement.css" />
+    <title>Positionnement</title>
+  </head>
+  <body>
+    <div class="page">
+      <div class="item1"></div>
+      <div class="item2"></div>
+      <div class="item3"></div>
+    </div>
+  </body>
+</html>
+```
+
+**Sortie**
+
+![relative](assets/relative.png)
+
+### Valeur `absolute`
+
+Il s'agit d'un type de positionnement très puissant qui vous permet de placer littéralement n'importe quel élément de page exactement où vous le souhaitez. Vous utilisez les attributs de positionnement `top`, `left`, `bottom`et `right`pour définir l'emplacement. N'oubliez pas que ces valeurs seront relatives au prochain élément parent avec un positionnement relatif (ou absolu). S'il n'y a pas un tel parent, il remontera par défaut jusqu'à l' `<html>`élément lui-même, ce qui signifie qu'il sera placé par rapport à la page elle-même.
+
+Le compromis (et la chose la plus importante à retenir) concernant le positionnement absolu est que ces éléments sont **supprimés du flux** d'éléments sur la page. Un élément avec ce type de positionnement n'est pas affecté par les autres éléments et n'affecte pas les autres éléments. C'est une chose sérieuse à considérer chaque fois que vous utilisez le positionnement absolu. Sa surutilisation ou sa mauvaise utilisation peut limiter la flexibilité de votre site.
+
+Voici le résultat du code précédent en modifiant la propriété position a `absolute`
+
+![relative](assets/absolute.png)
+
+
+
+### Valeur `fixed`
+
+Un élément positionné en `fixed` est positionné par rapport a la fenêtre du navigateur, ce qui signifie qu'il reste toujours à la même place même si la page défile. De la même manière qu'avec un élément positionné en relative, nous pouvons utiliser les propriétés `top`, `right`, `bottom` et `left`.
+
+**Exemple**
+
+```css
+body {
+  margin: 0;
+  background-color: rgb(233, 229, 229);
+}
+
+header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: cyan;
+  color: black;
+}
+
+header h1 {
+  margin: 0;
+  padding: 12px 16px;
+}
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="postionnement.css" />
+    <title>Positionnement</title>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <h1>Logo</h1>
+      </header>
+
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione ipsam
+        nihil, officia blanditiis reprehenderit commodi! Eveniet minus,
+        consequatur deserunt voluptas tempora modi molestias quisquam
+        perferendis fugit quas repellendus maxime nisi.
+      </p>
+      <p>
+        Impedit aliquid perferendis amet assumenda aliquam earum minus suscipit
+        explicabo ab fugiat quo exercitationem doloribus obcaecati inventore,
+        accusamus totam voluptatem nihil ad minima. Amet incidunt, ab omnis nam
+        maxime nemo?
+      </p>
+      <p>
+        Aut recusandae iste eum quis culpa distinctio placeat, earum
+        necessitatibus corporis error? Totam animi eveniet natus itaque ipsa
+        dolorum dolores et nulla, quibusdam molestias tenetur sunt rerum sint
+        aliquam corrupti?
+      </p>
+      <p>
+        Alias dignissimos quibusdam, asperiores suscipit praesentium, est
+        possimus, nisi debitis saepe neque modi quo reprehenderit quia rem
+        numquam blanditiis nostrum dolor? Quis, ipsa. Illum vel ad accusantium.
+        Alias, in suscipit.
+      </p>
+      <p>
+        Eligendi ullam distinctio, dignissimos ipsum id inventore dolore, natus
+        libero architecto quam, numquam ut laboriosam soluta? Iure nobis
+        corporis obcaecati quasi dolor maxime nemo autem totam quae, deserunt
+        sequi adipisci.
+      </p>
+    </div>
+  </body>
+</html>
+```
+
+
+
+**Sortie**
+
+![fixed](assets/fixed.png)
+
+Vous pouvez remarquez que le texte passe en dessous du header.
+
 ## Dates et Heures en PHP
+
 PHP offre de nombreux fonctions pour manipuler les dates et heures, Il existe près de cinquante fonctions de date et d'heure. Nous allons les réduire à certaines d'entre elles qui sont très importantes pour nous.
 
 ### Fonction `date()`
@@ -867,7 +1033,7 @@ Après le soumission, nous pouvons récupérer les données cette facon :
 
 ```php
 <?php
-	$login = $_POST['login'];
+    $login = $_POST['login'];
 	$password = $_POST['password'];
 	// ...
 ?>
@@ -879,7 +1045,7 @@ Nous pouvons utiliser les paramtres des URL pour transmettre les donnees par exe
 
 ```php
 <?php
-    	$name = $_GET['name'];
+    $name = $_GET['name'];
 	// ...
 ?>
 ```
